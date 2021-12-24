@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
+use App\Http\Controllers\FornecedorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,20 +22,24 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
+Route::post('/', [PrincipalController::class, 'salvar'])->name('site.index');
 
 Route::get('/sobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
 
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
+Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
 
 
-Route::get('/login', [ContatoController::class, 'login'])->name('site.login');
+Route::get('/login',  function() { return 'login';})->name('site.login');
 
 Route::prefix('/app')->group(function(){
-    Route::get('/clientes', [ContatoController::class, 'clientes'])->name('app.clientes');
-    Route::get('/fornecedores', [ContatoController::class, 'fornecedores'])->name('app.fornecedores');
-    Route::get('/produtos', [ContatoController::class, 'produtos'])->name('app.produtos');
+   
+    Route::get('/clientes', function() { return 'clientes';})->name('app.clientes');
+    Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedores');
+    Route::get('/produtos', function(){ return 'produtos';})->name('app.produtos');
     
 });
+
 
 Route::fallback(function() {
     echo '<h3>A rota acessada não existe <a href="'.route('site.index').'">Clique aqui</a></h3>';
