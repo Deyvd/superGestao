@@ -8,7 +8,11 @@
 
     </head>
     <body>
-        @include('site.layouts._partials.topo')
-        @yield('content')
+        <div>
+            @include('app.layouts._partials.topo')        
+        </div>
+        <div style="margin:auto">
+            @yield('content')
+        </div>
     </body>
 </html>
