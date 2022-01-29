@@ -43,7 +43,16 @@ Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(functi
     Route::get('/home', [HomeController::class,'index'])->name('app.home');
     Route::get('/sair', [LoginController::class, 'sair'])->name('app.sair');
     Route::get('/clientes', [ClienteController::class, 'index'])->name('app.clientes');
-    Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedores');
+    
+    Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedor');
+    Route::get('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
+    Route::post('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
+    Route::get('/fornecedor/adicionar', [FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
+    Route::post('/fornecedor/adicionar', [FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
+    Route::get('/fornecedor/editar{id}/{msg?}', [FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
+    Route::get('/fornecedor/exluir{id}}', [FornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
+    
+    
     Route::get('/produtos', [ProdutoController::class, 'index'])->name('app.produtos');
     
 });
