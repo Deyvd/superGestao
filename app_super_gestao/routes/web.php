@@ -8,6 +8,7 @@ use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ProdutoDetalheController;
 use App\Http\Middleware\LogAcessoMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -54,6 +55,7 @@ Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(functi
     
     
     Route::resource('/produtos', 'ProdutoController');
+    Route::resource('produto-detalhe', 'ProdutoDetalheController');
     
 });
 

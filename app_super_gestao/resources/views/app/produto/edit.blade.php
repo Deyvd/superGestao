@@ -5,8 +5,8 @@
 @section('content')
 <div class="conteudo-pagina">
     <div class="titulo-pagina-2">
-        
-        <h1>Adicionar Produto</h1>
+       
+        <h1>Editar Produto</h1>
         
     </div>
     <div class="menu">
@@ -19,7 +19,7 @@
     <div class="informacao-pagina">
         <div style="width: 30%; margin-left: auto; margin-right: auto;"> 
             
-           @component('app.produto._components.form_create_edit', ['unidades'=>$unidades])
+           @component('app.produto._components.form_create_edit', ['produto'=>$produto, 'unidades'=>$unidades])
                
            @endcomponent
         </div>

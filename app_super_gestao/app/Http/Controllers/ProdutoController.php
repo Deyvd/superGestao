@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use App\Produto;
+use App\ProdutoDetalhe;
 use App\Unidade;
 use Illuminate\Http\Request;
 
@@ -15,9 +17,28 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Produto::paginate(10);
+        $produtos = Item::paginate(10);
+        // $produtos = Produto::paginate(10);
+
+        // foreach($produtos as $key => $produto){
+        //     // print_r($produto->getAttributes());
+        //     // echo '<br><br><br>';
+
+        //     $produtoDetalhe = ProdutoDetalhe::where('produto_id', $produto->id)->first();
+
+        //     if(isset($produtoDetalhe)) {
+        //         // print_r($produtoDetalhe->getAttributes());
+
+        //         $produtos[$key]['comprimento'] = $produtoDetalhe->comprimento;
+        //         $produtos[$key]['largura'] = $produtoDetalhe->largura;
+        //         $produtos[$key]['altura'] = $produtoDetalhe->altura;
+
+        //     }
+
+        //     // echo '<hr>';
+        // }
         
-    return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
+        return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
 
     /**
@@ -82,7 +103,8 @@ class ProdutoController extends Controller
     public function edit(Produto $produto)
     {
         $unidades = Unidade::all();
-        return view('app.produto.create', ['produto'=>$produto, 'unidades'=>$unidades]);
+        return view('app.produto.edit', ['produto'=>$produto, 'unidades'=>$unidades]);
+        // return view('app.produto.create', ['produto'=>$produto, 'unidades'=>$unidades]);
     }
 
     /**
