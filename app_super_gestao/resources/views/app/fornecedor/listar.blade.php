@@ -16,7 +16,7 @@
 
     <div class="informacao-pagina">
         <div style="width: 90%; margin-left: auto; margin-right: auto;"> 
-            <table class="borda-preta">
+            <table class="borda-preta" width="100%">
                 <thead class="borda-preta">
                     <th>Nome</th>
                     <th>Site</th>
@@ -38,7 +38,7 @@
                     <tr>
                         <td colspan="6">
                             <p>Lita de Produtos</p> 
-                            <table border='1' style='margin:20px'>
+                            <table border='1' style='margin:20px'  >
                                 <thead>
                                     <tr>
                                         <th>ID</th>

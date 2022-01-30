@@ -16,7 +16,7 @@
 
     <div class="informacao-pagina">
         <div style="width: 90%; margin-left: auto; margin-right: auto;"> 
-            <table class="borda-preta">
+            <table class="borda-preta"  width="100%">
                 <thead class="borda-preta">
                     <th>Nome</th>
                     <th>Descrição</th>

@@ -7,7 +7,7 @@
     <div class="titulo-pagina-2">
         <h1>Fornecedores</h1>
     </div>
-    <div class="menu">
+    <div class="menu" >
         <ul>
             <li><a href="{{ route('app.fornecedor.adicionar')}}">Novo</a></li>
             <li><a href="{{ route('app.fornecedor')}}">Consulta</a></li>
