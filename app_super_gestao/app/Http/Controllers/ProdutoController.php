@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Fornecedor;
 use App\Item;
 use App\Produto;
 use App\ProdutoDetalhe;
@@ -17,7 +18,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Item::paginate(10);
+        $produtos = Item::with(['itemDetalhe', 'fornecedor'])->paginate(10);
         // $produtos = Produto::paginate(10);
 
         // foreach($produtos as $key => $produto){
@@ -49,7 +50,8 @@ class ProdutoController extends Controller
     public function create(Produto $produto)
     {
         $unidades = Unidade::all();
-        return view('app.produto.create', ['produto'=>$produto,'unidades'=>$unidades]);
+        $fornecedores = Fornecedor::all();
+        return view('app.produto.create', ['produto'=>$produto,'unidades'=>$unidades, 'fornecedores' => $fornecedores ]);
     }
 
     /**
@@ -103,7 +105,8 @@ class ProdutoController extends Controller
     public function edit(Produto $produto)
     {
         $unidades = Unidade::all();
-        return view('app.produto.edit', ['produto'=>$produto, 'unidades'=>$unidades]);
+        $fornecedores = Fornecedor::all();
+        return view('app.produto.edit', ['produto'=>$produto, 'unidades'=>$unidades,'fornecedores' => $fornecedores]);
         // return view('app.produto.create', ['produto'=>$produto, 'unidades'=>$unidades]);
     }
 
@@ -114,7 +117,7 @@ class ProdutoController extends Controller
      * @param  \App\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produto $produto)
+    public function update(Request $request, Item $produto)
     {
         $produto->update($request->all());
         return redirect()->route('produtos.show', ['produto'=>$produto->id]);

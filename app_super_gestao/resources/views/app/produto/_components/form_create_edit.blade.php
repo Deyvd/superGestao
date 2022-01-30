@@ -1,11 +1,22 @@
 @if(isset($produto->id))
-    <form method="post" action="{{route('produtos.update', ['produto' => $produto->id])}}">
+<form method="post" action="{{route('produtos.update', ['produto' => $produto->id])}}">
     @csrf
     @method('PUT')
 @else
-    <form method="post" action="{{route('produtos.store')}}">
+<form method="post" action="{{route('produtos.store')}}">
     @csrf
 @endif
+
+    <select   select name="fornecedor_id" class="borda-preta">
+        <option >-- Selecione um Fornecedor --</option>
+            @foreach ($fornecedores as $fornecedor )
+            
+            <option value="{{$fornecedor->id}}" {{($produto->fornecedor_id ?? old('fornecedor_id')) == $fornecedor->id ? 'selected' : ''}}>{{$fornecedor->name}}</option>
+
+        @endforeach
+    </select>
+    <small>{{$errors->has('fornecedor_id') ? $errors->first('fornecedor_id') : ''}}</small>
+
 
     <input type="text" name="nome" value="{{$produto->nome ?? old('nome') }}" placeholder="Nome" class="borda-preta">
     <small>{{$errors->has('nome') ? $errors->first('nome') : ''}}</small>
@@ -25,6 +36,7 @@
         @endforeach
     </select>
     <small>{{$errors->has('unidade_id') ? $errors->first('unidade_id') : ''}}</small>
+
     @if(isset($produto->id))
         <button type="submit" class="btn btn-primary borda-preta">Atualizar</button>
     @else
