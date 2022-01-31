@@ -11,6 +11,10 @@
         @endforeach
     </select>
     <small>{{$errors->has('produto_id') ? $errors->first('produto_id') : ''}}</small>
+
+    <input type="number" name="quantidade" value="{{old('quantidade') ? old('quantidade') : ''}}" placeholder="Quantidade" class="borda-preta">
+    <small>{{$errors->has('quantidade') ? $errors->first('quantidade') : ''}}</small>
+
     
 
         <button type="submit" class="btn btn-primary borda-preta">Cadastrar</button>
