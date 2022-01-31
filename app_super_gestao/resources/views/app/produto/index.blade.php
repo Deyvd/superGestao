@@ -16,7 +16,7 @@
 
     <div class="informacao-pagina">
         <div style="width: 90%; margin-left: auto; margin-right: auto;"> 
-            <table class="borda-preta"  width="100%">
+            <table class="borda-preta" border='1'; width="100%">
                 <thead class="borda-preta">
                     <th>Nome</th>
                     <th>Descrição</th>
@@ -52,6 +52,16 @@
                             </form>
                         </td>
                         <td><a href="{{ route('produtos.edit', ['produto' => $produto->id]) }}">Editar</a></td>
+                    </tr>
+                    <tr>
+                        <td colspan="12">
+                            <p>Pedidos</p>
+                            @foreach ($produto->pedidos as $pedido )
+                                <a href="{{route('pedido-produto.create', ['pedido'=> $pedido->id])}}">
+                                    {{ $pedido->id }} /
+                                </a>                               
+                            @endforeach
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

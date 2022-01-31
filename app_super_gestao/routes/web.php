@@ -7,6 +7,7 @@ use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PedidoProdutoController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProdutoDetalheController;
 use App\Http\Middleware\LogAcessoMiddleware;
@@ -58,8 +59,11 @@ Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(functi
 
     Route::resource('/cliente', 'ClienteController' );
     Route::resource('/pedido', 'PedidoController' );
-    Route::resource('/pedido-produto', 'PedidoProdutoController' );
+    // Route::resource('/pedido-produto', 'PedidoProdutoController' );
 
+    Route::get('pedido-produto/create/{pedido}', [PedidoProdutoController::class, 'create'])->name('pedido-produto.create');
+    Route::post('pedido-produto/create/{pedido}', [PedidoProdutoController::class, 'store'])->name('pedido-produto.store');
+    
     
 });
 
